@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+:root {
+  --buttonDiameter: 60px;/* 丸ボタンの大きさ */
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.btn {
+ --right-position: 20px;
+ --top-position: 20px;
+ background-color: #333;
+ border-radius: 50%;
+ border: 2px solid #333;
+ color: #fff;
+ display: grid;
+ font-size: 13px;
+ font-weight: 600;
+ height: var(--buttonDiameter);
+ /* right: 20px; */
+ place-content: center;
+ position: fixed;
+ /* top: calc( 0px + var(--buttonDiameter) ); */
+ /* translate: -50% -50%; */
+ /* top: 20px; */
+ transition: scale 0.1s ease-in;
+ user-select: none;
+ width: var(--buttonDiameter);
+ z-index: 1000;
+ &.touched {
+   scale: 1.5 1.5;
+ }
+ &.open {
+  background-color: #fff;
+  color: #333;
+ }
+}
+
+.menu-bg {
+  --right-position: 20px;
+  --top-position: 20px;
+  background-color: #ffd700;
+  border-radius: 50%;
+  height: var(--buttonDiameter);
+  /* right: 20px; */
+  position: fixed;
+  /* top: 20px; */
+  transition: scale 0.5s ease-in;
+  scale: 0;
+  width: var(--buttonDiameter);
+  z-index: 100;
+}
+
+.menu {
+  bottom: 0;
+  display: grid;
+  left: 0;
+  place-content: center;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 500;
+  & ul {
+    font-size: 24px;
+    letter-spacing: 0.1em;
+    margin: 0;
+    padding: 0;
+    & li{
+      list-style-type: none;
+      opacity: 1;
+      & + li {
+        margin-top: 1em;
+      }
+      & a {
+        color: #333;
+        font-weight: 800;
+        text-decoration: none;
+      }
+    }
+  }
+}
+.menu[data-menu='sp-close'] {
+  display: none;
+  & li {
+    opacity: 0;
+  }
+}
